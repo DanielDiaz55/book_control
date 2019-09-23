@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 7 Apuntes de Control Y Aseguramiento de la Calidad | Control Estadístico de la Calidad</title>
+  <meta name="description" content="Prácticas de la asignatura de Control Estadistico de la Calidad." />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 7 Apuntes de Control Y Aseguramiento de la Calidad | Control Estadístico de la Calidad" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Prácticas de la asignatura de Control Estadistico de la Calidad." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 7 Apuntes de Control Y Aseguramiento de la Calidad | Control Estadístico de la Calidad" />
+  
+  <meta name="twitter:description" content="Prácticas de la asignatura de Control Estadistico de la Calidad." />
+  
+
+<meta name="author" content="Miguel Flores Sánchez (miguel.flores@epn.edu.ec) Javier Tarrío-Saavedra (javier.tarrio@udc.es) Salvador Naya ()" />
+
+
+<meta name="date" content="2019-09-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="practica-5.html"/>
+<link rel="next" href="bayesian-cps.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Control Estadistico de la Calidad </a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prólogo</a></li>
+<li class="part"><span><b>I Teoria</b></span></li>
+<li class="chapter" data-level="1" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html"><i class="fa fa-check"></i><b>1</b> Control Estadistico de la Calidad</a><ul>
+<li class="chapter" data-level="1.1" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#cec-y-seis-sigma-alternativas-en-r"><i class="fa fa-check"></i><b>1.1</b> CEC y seis Sigma: Alternativas en <em>R</em></a></li>
+<li class="chapter" data-level="1.2" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#etapa-definir"><i class="fa fa-check"></i><b>1.2</b> Etapa <strong>DEFINIR</strong></a><ul>
+<li class="chapter" data-level="1.2.1" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#mapa-de-procesos"><i class="fa fa-check"></i><b>1.2.1</b> Mapa de Procesos</a></li>
+<li class="chapter" data-level="1.2.2" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#diagrama-de-ishikawa-o-espina-de-pescado"><i class="fa fa-check"></i><b>1.2.2</b> Diagrama de Ishikawa o espina de pescado</a></li>
+<li class="chapter" data-level="1.2.3" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#diagrama-de-pareto"><i class="fa fa-check"></i><b>1.2.3</b> Diagrama de Pareto</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#epata-analizar-anova"><i class="fa fa-check"></i><b>1.3</b> Epata <strong>ANALIZAR</strong>: ANOVA</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#introduccion"><i class="fa fa-check"></i><b>1.3.1</b> Introducción</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#etapa-medir"><i class="fa fa-check"></i><b>1.4</b> Etapa <strong>MEDIR</strong></a><ul>
+<li class="chapter" data-level="1.4.1" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#estudios-rr"><i class="fa fa-check"></i><b>1.4.1</b> Estudios R&amp;R</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#etapa-control"><i class="fa fa-check"></i><b>1.5</b> Etapa <strong>CONTROL</strong>:</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#graficos-de-control"><i class="fa fa-check"></i><b>1.5.1</b> Gráficos de control</a></li>
+<li class="chapter" data-level="1.5.2" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#graficos-de-control-multivariantes"><i class="fa fa-check"></i><b>1.5.2</b> Gráficos de control multivariantes</a></li>
+<li class="chapter" data-level="1.5.3" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#graficos-de-control-por-variables"><i class="fa fa-check"></i><b>1.5.3</b> Graficos de control por variables</a></li>
+<li class="chapter" data-level="1.5.4" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#graficos-de-control-para-atributos"><i class="fa fa-check"></i><b>1.5.4</b> Gráficos de control para atributos</a></li>
+<li class="chapter" data-level="1.5.5" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#otros-graficos-de-control-univariante"><i class="fa fa-check"></i><b>1.5.5</b> Otros graficos de Control univariante</a></li>
+<li class="chapter" data-level="1.5.6" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#curvas-oc"><i class="fa fa-check"></i><b>1.5.6</b> Curvas OC</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#etapa-analizar-analisis-de-capacidad"><i class="fa fa-check"></i><b>1.6</b> Etapa <strong>ANALIZAR</strong>: Analisis de capacidad</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#introduccion-1"><i class="fa fa-check"></i><b>1.6.1</b> Introducción</a></li>
+<li class="chapter" data-level="1.6.2" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#indices-de-capacidad"><i class="fa fa-check"></i><b>1.6.2</b> Indices de capacidad</a></li>
+<li class="chapter" data-level="1.6.3" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#analisis-de-capacidad-en-r"><i class="fa fa-check"></i><b>1.6.3</b> Analisis de capacidad en R</a></li>
+<li class="chapter" data-level="1.6.4" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#analisis-de-capacidad-con-datos-no-normales"><i class="fa fa-check"></i><b>1.6.4</b> Análisis de capacidad con datos no normales</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#etapa-controlar-y-analizar"><i class="fa fa-check"></i><b>1.7</b> Etapa <strong>CONTROLAR</strong> y <strong>ANALIZAR</strong></a><ul>
+<li class="chapter" data-level="1.7.1" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#cec-multivariante-reduccion-de-la-dimencion"><i class="fa fa-check"></i><b>1.7.1</b> CEC multivariante: Reducción de la Dimención</a></li>
+<li class="chapter" data-level="1.7.2" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#cec-para-variables-autocorrelacionadas"><i class="fa fa-check"></i><b>1.7.2</b> CEC para variables autocorrelacionadas</a></li>
+<li class="chapter" data-level="1.7.3" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#analisis-de-capacidad-para-datos-autocorrelados"><i class="fa fa-check"></i><b>1.7.3</b> Análisis de capacidad para datos autocorrelados</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#introduccion-al-diseno-de-experimentos-con-r"><i class="fa fa-check"></i><b>1.8</b> Introducción al diseño de experimentos con R</a><ul>
+<li class="chapter" data-level="1.8.1" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#ejemplos-de-contrastes-anova"><i class="fa fa-check"></i><b>1.8.1</b> Ejemplos de contrastes ANOVA</a></li>
+<li class="chapter" data-level="1.8.2" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#diseno-de-experimentos-factorial-2k"><i class="fa fa-check"></i><b>1.8.2</b> Diseño de experimentos factorial <span class="math inline">\(2^k\)</span></a></li>
+<li class="chapter" data-level="1.8.3" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#diseno-de-experimentos-factoriales-fraccionarios"><i class="fa fa-check"></i><b>1.8.3</b> Diseño de experimentos factoriales fraccionarios</a></li>
+<li class="chapter" data-level="1.8.4" data-path="control-estadistico-de-la-calidad.html"><a href="control-estadistico-de-la-calidad.html#estudios-interlaboratorios"><i class="fa fa-check"></i><b>1.8.4</b> Estudios Interlaboratorios</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Practicas</b></span></li>
+<li class="chapter" data-level="2" data-path="practica-1.html"><a href="practica-1.html"><i class="fa fa-check"></i><b>2</b> Práctica 1</a><ul>
+<li class="chapter" data-level="2.1" data-path="practica-1.html"><a href="practica-1.html#cec-y-seis-signa-alternativas-en-r"><i class="fa fa-check"></i><b>2.1</b> CEC y Seis Signa: alternativas en R</a></li>
+<li class="chapter" data-level="2.2" data-path="practica-1.html"><a href="practica-1.html#etapa-definir-mapas-de-procesos-ishikawa-pareto"><i class="fa fa-check"></i><b>2.2</b> Etapa <em>DEFINIR</em>: Mapas de procesos, Ishikawa, Pareto</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="practica-1.html"><a href="practica-1.html#pizza"><i class="fa fa-check"></i><b>2.2.1</b> Mapas de procesos</a></li>
+<li class="chapter" data-level="2.2.2" data-path="practica-1.html"><a href="practica-1.html#ishikawa"><i class="fa fa-check"></i><b>2.2.2</b> DIAGRAMA DE ISHIKAWA</a></li>
+<li class="chapter" data-level="2.2.3" data-path="practica-1.html"><a href="practica-1.html#par"><i class="fa fa-check"></i><b>2.2.3</b> DIAGRAMA DE PARETO</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="practica-1.html"><a href="practica-1.html#anova"><i class="fa fa-check"></i><b>2.3</b> Etapa <em>ANALIZAR</em>: ANOVA</a></li>
+<li class="chapter" data-level="2.4" data-path="practica-1.html"><a href="practica-1.html#RyR"><i class="fa fa-check"></i><b>2.4</b> Etapa <em>MEDIR</em>: Estudios R&amp;R</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="practica-2.html"><a href="practica-2.html"><i class="fa fa-check"></i><b>3</b> Práctica 2</a><ul>
+<li class="chapter" data-level="3.1" data-path="practica-2.html"><a href="practica-2.html#graficos-de-control-1"><i class="fa fa-check"></i><b>3.1</b> Gráficos de Control</a></li>
+<li class="chapter" data-level="3.2" data-path="practica-2.html"><a href="practica-2.html#graficos-de-control-por-variables-1"><i class="fa fa-check"></i><b>3.2</b> Gráficos de Control por variables</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="practica-2.html"><a href="practica-2.html#gqcc"><i class="fa fa-check"></i><b>3.2.1</b> Gráficos qcc para variables</a></li>
+<li class="chapter" data-level="3.2.2" data-path="practica-2.html"><a href="practica-2.html#grafico-de-control-para-el-rango-y-la-media-datos-plates"><i class="fa fa-check"></i><b>3.2.2</b> Gráfico de control para el RANGO y la MEDIA: datos “plates”</a></li>
+<li class="chapter" data-level="3.2.3" data-path="practica-2.html"><a href="practica-2.html#renderizado"><i class="fa fa-check"></i><b>3.2.3</b> Grafico de control para valores individuales de las variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="practica-2.html"><a href="practica-2.html#graficos-de-control-por-atributos"><i class="fa fa-check"></i><b>3.3</b> Gráficos de control por atributos</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="practica-2.html"><a href="practica-2.html#P"><i class="fa fa-check"></i><b>3.3.1</b> Gráficos p</a></li>
+<li class="chapter" data-level="3.3.2" data-path="practica-2.html"><a href="practica-2.html#np"><i class="fa fa-check"></i><b>3.3.2</b> Gráfico tipo np</a></li>
+<li class="chapter" data-level="3.3.3" data-path="practica-2.html"><a href="practica-2.html#gc"><i class="fa fa-check"></i><b>3.3.3</b> Gráficos C</a></li>
+<li class="chapter" data-level="3.3.4" data-path="practica-2.html"><a href="practica-2.html#gu"><i class="fa fa-check"></i><b>3.3.4</b> Gráficos U</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="practica-2.html"><a href="practica-2.html#otros-graficos-de-control-cusum-y-ewma"><i class="fa fa-check"></i><b>3.4</b> Otros gráficos de Control: CUSUM y EWMA</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="practica-2.html"><a href="practica-2.html#cusum"><i class="fa fa-check"></i><b>3.4.1</b> GRÀFICOS CUSUM</a></li>
+<li class="chapter" data-level="3.4.2" data-path="practica-2.html"><a href="practica-2.html#ewma"><i class="fa fa-check"></i><b>3.4.2</b> GRÁFICOS EWMA</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="practica-2.html"><a href="practica-2.html#oc"><i class="fa fa-check"></i><b>3.5</b> CURVAS OC</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="practica-2.html"><a href="practica-2.html#curvas-oc-para-grafica-de-variables"><i class="fa fa-check"></i><b>3.5.1</b> Curvas OC para gráfica de variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="practica-3.html"><a href="practica-3.html"><i class="fa fa-check"></i><b>4</b> Práctica 3</a><ul>
+<li class="chapter" data-level="4.1" data-path="practica-3.html"><a href="practica-3.html#etapa-analizar-analisis-de-la-capacidad"><i class="fa fa-check"></i><b>4.1</b> Etapa <em>ANALIZAR</em>: Análisis de la capacidad</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="practica-3.html"><a href="practica-3.html#analisis-de-capacidad-con-r"><i class="fa fa-check"></i><b>4.1.1</b> Análisis de capacidad con R:</a></li>
+<li class="chapter" data-level="4.1.2" data-path="practica-3.html"><a href="practica-3.html#analisis-de-la-capacidad-con-datos-no-normales"><i class="fa fa-check"></i><b>4.1.2</b> Análisis de la capacidad con datos no normales</a></li>
+<li class="chapter" data-level="4.1.3" data-path="practica-3.html"><a href="practica-3.html#Piedra"><i class="fa fa-check"></i><b>4.1.3</b> Caso Práctico</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="practica-4.html"><a href="practica-4.html"><i class="fa fa-check"></i><b>5</b> Práctica 4</a><ul>
+<li class="chapter" data-level="5.1" data-path="practica-4.html"><a href="practica-4.html#etapa-controlar-y-analizar-1"><i class="fa fa-check"></i><b>5.1</b> Etapa Controlar y Analizar</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="practica-4.html"><a href="practica-4.html#control-estadistico-de-calidad-multivariante"><i class="fa fa-check"></i><b>5.1.1</b> Control Estadistico de Calidad Multivariante:</a></li>
+<li class="chapter" data-level="5.1.2" data-path="practica-4.html"><a href="practica-4.html#control-de-calidad-de-variables-autocorreladas"><i class="fa fa-check"></i><b>5.1.2</b> Control de Calidad de variables autocorreladas</a></li>
+<li class="chapter" data-level="5.1.3" data-path="practica-4.html"><a href="practica-4.html#autocorr"><i class="fa fa-check"></i><b>5.1.3</b> Análisis de capacidad con datos autocorrelados.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="practica-5.html"><a href="practica-5.html"><i class="fa fa-check"></i><b>6</b> Práctica 5</a><ul>
+<li class="chapter" data-level="6.1" data-path="practica-5.html"><a href="practica-5.html#introduccion-al-diseno-de-experimentos-con-r-1"><i class="fa fa-check"></i><b>6.1</b> Introducción al diseño de experimentos con R</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="practica-5.html"><a href="practica-5.html#ejemplos-de-pruebas-anova"><i class="fa fa-check"></i><b>6.1.1</b> Ejemplos de Pruebas ANOVA</a></li>
+<li class="chapter" data-level="6.1.2" data-path="practica-5.html"><a href="practica-5.html#disenos-factoriales"><i class="fa fa-check"></i><b>6.1.2</b> DISEÑOS FACTORIALES</a></li>
+<li class="chapter" data-level="6.1.3" data-path="practica-5.html"><a href="practica-5.html#disenos-de-experimentos-factoriales-fraccionados"><i class="fa fa-check"></i><b>6.1.3</b> DISEÑOS DE EXPERIMENTOS FACTORIALES FRACCIONADOS</a></li>
+<li class="chapter" data-level="6.1.4" data-path="practica-5.html"><a href="practica-5.html#ilab"><i class="fa fa-check"></i><b>6.1.4</b> ESTUDIOS INTERLABORATORIO (CASO PARTICULAR DE DOE Y ESTUDIOS R&amp;R)</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Apuntes en Clase</b></span></li>
+<li class="chapter" data-level="7" data-path="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><a href="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><i class="fa fa-check"></i><b>7</b> Apuntes de Control Y Aseguramiento de la Calidad</a><ul>
+<li class="chapter" data-level="7.1" data-path="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><a href="apuntes-de-control-y-aseguramiento-de-la-calidad.html#conceptos-basicos"><i class="fa fa-check"></i><b>7.1</b> <strong>Conceptos Básicos</strong></a></li>
+<li class="chapter" data-level="7.2" data-path="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><a href="apuntes-de-control-y-aseguramiento-de-la-calidad.html#estadistica-descriptiva"><i class="fa fa-check"></i><b>7.2</b> <strong>Estadística descriptiva</strong></a><ul>
+<li class="chapter" data-level="7.2.1" data-path="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><a href="apuntes-de-control-y-aseguramiento-de-la-calidad.html#medidas-de-tendencia-central"><i class="fa fa-check"></i><b>7.2.1</b> <strong>Medidas de tendencia central</strong></a></li>
+<li class="chapter" data-level="7.2.2" data-path="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><a href="apuntes-de-control-y-aseguramiento-de-la-calidad.html#medidas-de-dispersion-o-variabilidad"><i class="fa fa-check"></i><b>7.2.2</b> <strong>Medidas de dispersión o variabilidad </strong></a></li>
+<li class="chapter" data-level="7.2.3" data-path="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><a href="apuntes-de-control-y-aseguramiento-de-la-calidad.html#relacion-entre-barx-y-s-interpretacion-de-la-desviacion-estandar"><i class="fa fa-check"></i><b>7.2.3</b> <strong>Relación entre <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(S\)</span> (interpretación de la desviación estándar)</strong></a></li>
+<li class="chapter" data-level="7.2.4" data-path="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><a href="apuntes-de-control-y-aseguramiento-de-la-calidad.html#limites-reales-o-naturales"><i class="fa fa-check"></i><b>7.2.4</b> <strong>Límites reales o naturales</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><a href="apuntes-de-control-y-aseguramiento-de-la-calidad.html#histograma-y-tabla-de-frecuencias"><i class="fa fa-check"></i><b>7.3</b> <strong>Histograma y tabla de frecuencias</strong></a><ul>
+<li class="chapter" data-level="7.3.1" data-path="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><a href="apuntes-de-control-y-aseguramiento-de-la-calidad.html#tabla-de-frecuencias"><i class="fa fa-check"></i><b>7.3.1</b> <strong>Tabla de frecuencias</strong></a></li>
+<li class="chapter" data-level="7.3.2" data-path="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><a href="apuntes-de-control-y-aseguramiento-de-la-calidad.html#histograma"><i class="fa fa-check"></i><b>7.3.2</b> <strong>Histograma</strong></a></li>
+<li class="chapter" data-level="7.3.3" data-path="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><a href="apuntes-de-control-y-aseguramiento-de-la-calidad.html#limitaciones-del-histograma"><i class="fa fa-check"></i><b>7.3.3</b> <strong>Limitaciones del histograma</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><a href="apuntes-de-control-y-aseguramiento-de-la-calidad.html#medidas-de-forma"><i class="fa fa-check"></i><b>7.4</b> <strong>Medidas de forma</strong></a><ul>
+<li class="chapter" data-level="7.4.1" data-path="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><a href="apuntes-de-control-y-aseguramiento-de-la-calidad.html#sesgo"><i class="fa fa-check"></i><b>7.4.1</b> <strong>Sesgo</strong></a></li>
+<li class="chapter" data-level="7.4.2" data-path="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><a href="apuntes-de-control-y-aseguramiento-de-la-calidad.html#curtosis"><i class="fa fa-check"></i><b>7.4.2</b> <strong>Curtosis</strong></a></li>
+<li class="chapter" data-level="7.4.3" data-path="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><a href="apuntes-de-control-y-aseguramiento-de-la-calidad.html#cuantiles-percentiles"><i class="fa fa-check"></i><b>7.4.3</b> <strong>Cuantiles (percentiles)</strong></a></li>
+<li class="chapter" data-level="7.4.4" data-path="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><a href="apuntes-de-control-y-aseguramiento-de-la-calidad.html#cuartiles"><i class="fa fa-check"></i><b>7.4.4</b> <strong>Cuartiles</strong></a></li>
+<li class="chapter" data-level="7.4.5" data-path="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><a href="apuntes-de-control-y-aseguramiento-de-la-calidad.html#diagrama-de-caja"><i class="fa fa-check"></i><b>7.4.5</b> <strong>Diagrama de caja</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><a href="apuntes-de-control-y-aseguramiento-de-la-calidad.html#conceptos-de-probabilidad"><i class="fa fa-check"></i><b>7.5</b> <strong>Conceptos de probabilidad</strong></a></li>
+<li class="chapter" data-level="7.6" data-path="apuntes-de-control-y-aseguramiento-de-la-calidad.html"><a href="apuntes-de-control-y-aseguramiento-de-la-calidad.html#interpretacion-de-la-probabilidad"><i class="fa fa-check"></i><b>7.6</b> <strong>Interpretación de la probabilidad</strong></a></li>
+</ul></li>
+<li class="part"><span><b>IV Proyectos</b></span></li>
+<li class="chapter" data-level="8" data-path="bayesian-cps.html"><a href="bayesian-cps.html"><i class="fa fa-check"></i><b>8</b> Bayesian Cps</a><ul>
+<li class="chapter" data-level="8.1" data-path="bayesian-cps.html"><a href="bayesian-cps.html#introduccion-al-pensamiento-bayesiano"><i class="fa fa-check"></i><b>8.1</b> <strong>1. Introducción al pensamiento Bayesiano</strong></a></li>
+<li class="chapter" data-level="8.2" data-path="bayesian-cps.html"><a href="bayesian-cps.html#repaso"><i class="fa fa-check"></i><b>8.2</b> <strong>2. Repaso</strong></a></li>
+<li class="chapter" data-level="8.3" data-path="bayesian-cps.html"><a href="bayesian-cps.html#definiciones-y-notaciones"><i class="fa fa-check"></i><b>8.3</b> <strong>3. Definiciones y notaciones</strong></a></li>
+<li class="chapter" data-level="8.4" data-path="bayesian-cps.html"><a href="bayesian-cps.html#la-distribucion-posterior-del-indice-de-capacidad-de-proceso-inferior"><i class="fa fa-check"></i><b>8.4</b> <strong>4. La distribución posterior del índice de capacidad de proceso inferior</strong></a><ul>
+<li class="chapter" data-level="8.4.1" data-path="bayesian-cps.html"><a href="bayesian-cps.html#codigo-en-r__"><i class="fa fa-check"></i><b>8.4.1</b> __4.1 **Codigo en R__</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="bayesian-cps.html"><a href="bayesian-cps.html#distribucion-posterior-de-c_pkminc_plc_pu"><i class="fa fa-check"></i><b>8.5</b> <strong>5. Distribución posterior de:</strong> <span class="math inline">\(C_{pk}=min(C_{pl},C_{pu})\)</span></a></li>
+<li class="chapter" data-level="8.6" data-path="bayesian-cps.html"><a href="bayesian-cps.html#ejemplo"><i class="fa fa-check"></i><b>8.6</b> <strong>6. Ejemplo </strong></a></li>
+<li class="chapter" data-level="8.7" data-path="bayesian-cps.html"><a href="bayesian-cps.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>8.7</b> <strong>7. Intervalos de confianza</strong></a></li>
+<li class="chapter" data-level="8.8" data-path="bayesian-cps.html"><a href="bayesian-cps.html#distribucion-posterior-dec_pl-y-c_pu"><i class="fa fa-check"></i><b>8.8</b> <strong>8. Distribución posterior de:</strong><span class="math inline">\(C_{pl}\)</span> y <span class="math inline">\(C_{pu}\)</span></a><ul>
+<li class="chapter" data-level="8.8.1" data-path="bayesian-cps.html"><a href="bayesian-cps.html#codigo-en-r__-1"><i class="fa fa-check"></i><b>8.8.1</b> __8.1 **Codigo en R__</a></li>
+</ul></li>
+<li class="chapter" data-level="8.9" data-path="bayesian-cps.html"><a href="bayesian-cps.html#conclusiones"><i class="fa fa-check"></i><b>8.9</b> <strong>9. Conclusiones</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="control-no-parametrico.html"><a href="control-no-parametrico.html"><i class="fa fa-check"></i><b>9</b> Control no Parametrico</a><ul>
+<li class="chapter" data-level="9.1" data-path="control-no-parametrico.html"><a href="control-no-parametrico.html#control-no-parametricos"><i class="fa fa-check"></i><b>9.1</b> Control No Paramétricos</a></li>
+<li class="chapter" data-level="9.2" data-path="control-no-parametrico.html"><a href="control-no-parametrico.html#test-de-rango-cuadrado-conover"><i class="fa fa-check"></i><b>9.2</b> Test de Rango Cuadrado “Conover”</a></li>
+<li class="chapter" data-level="9.3" data-path="control-no-parametrico.html"><a href="control-no-parametrico.html#metodo"><i class="fa fa-check"></i><b>9.3</b> Método</a></li>
+<li class="chapter" data-level="9.4" data-path="control-no-parametrico.html"><a href="control-no-parametrico.html#implementacion-en-r"><i class="fa fa-check"></i><b>9.4</b> Implementación en R</a></li>
+<li class="chapter" data-level="9.5" data-path="control-no-parametrico.html"><a href="control-no-parametrico.html#estadistico-t-de-conover"><i class="fa fa-check"></i><b>9.5</b> Estadístico T de Conover</a></li>
+<li class="chapter" data-level="9.6" data-path="control-no-parametrico.html"><a href="control-no-parametrico.html#histograma-de-t-bootstrap"><i class="fa fa-check"></i><b>9.6</b> Histograma de T (Bootstrap)</a></li>
+<li class="chapter" data-level="9.7" data-path="control-no-parametrico.html"><a href="control-no-parametrico.html#histograma-de-t-bootstrap-1"><i class="fa fa-check"></i><b>9.7</b> Histograma de T (Bootstrap)</a></li>
+<li class="chapter" data-level="9.8" data-path="control-no-parametrico.html"><a href="control-no-parametrico.html#graficos-de-control-2"><i class="fa fa-check"></i><b>9.8</b> Gráficos de Control</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="test-de-mood.html"><a href="test-de-mood.html"><i class="fa fa-check"></i><b>10</b> <strong>Test de Mood</strong></a><ul>
+<li class="chapter" data-level="10.1" data-path="test-de-mood.html"><a href="test-de-mood.html#test-de-mood-para-la-dispersion"><i class="fa fa-check"></i><b>10.1</b> Test de Mood para la dispersión</a></li>
+<li class="chapter" data-level="10.2" data-path="test-de-mood.html"><a href="test-de-mood.html#graficos-de-control-3"><i class="fa fa-check"></i><b>10.2</b> Gráficos de control</a></li>
+<li class="chapter" data-level="10.3" data-path="test-de-mood.html"><a href="test-de-mood.html#simulacion"><i class="fa fa-check"></i><b>10.3</b> Simulación</a></li>
+<li class="chapter" data-level="10.4" data-path="test-de-mood.html"><a href="test-de-mood.html#desempeno-del-grafico-de-controlarl"><i class="fa fa-check"></i><b>10.4</b> DESEMPEñO DEL GRáFICO DE CONTROL(ARL)</a></li>
+<li class="chapter" data-level="10.5" data-path="test-de-mood.html"><a href="test-de-mood.html#cpmchange-point-model"><i class="fa fa-check"></i><b>10.5</b> CPM(Change Point Model)</a></li>
+<li class="chapter" data-level="10.6" data-path="test-de-mood.html"><a href="test-de-mood.html#conclusiones-1"><i class="fa fa-check"></i><b>10.6</b> Conclusiones</a></li>
+<li class="chapter" data-level="10.7" data-path="test-de-mood.html"><a href="test-de-mood.html#referencias"><i class="fa fa-check"></i><b>10.7</b> Referencias</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Control Estadístico de la Calidad</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="apuntes-de-control-y-aseguramiento-de-la-calidad" class="section level1">
+<h1><span class="header-section-number">Capítulo 7</span> Apuntes de Control Y Aseguramiento de la Calidad</h1>
+<div id="conceptos-basicos" class="section level2">
+<h2><span class="header-section-number">7.1</span> <strong>Conceptos Básicos</strong></h2>
+<p>Desde el punto de vista de los clientes, las empresas y/u organizaciones existen para proveer un producto material o inmaterial, un bien o un servicio, ya que ellos necesitan productos con características que satisfagan sus necesidades y expectativas. Estos productos son resultado de un proceso el cual es un conjunto de actividades entrelazadas o interrelacionadas que reciben determinados insumos que son transformados en un resultado o en un producto.</p>
+<p><strong>Variables de entrada del proceso</strong><br />
+Son las que defi nen las condiciones de operación del proceso e incluyen las variables de control y las que aunque no son controladas, influyen en el desempeño del mismo.</p>
+<p><strong>Variables de salida</strong><br />
+Son las características de calidad en las que se reflejan los resultados obtenidos en un proceso.</p>
+<p><strong>Calidad</strong><br />
+Es el juicio que el cliente tiene sobre un producto o servicio, resultado del grado con el cual un conjunto de caracteríticas inherentes al producto cumple con sus requerimientos.</p>
+<p><strong>Satisfacción del cliente</strong><br />
+Es la percepción de éste acerca del grado con el cual sus necesidades o expectativas han sido cumplidas.</p>
+<p><strong>Tiempo de ciclo</strong><br />
+Es el tiempo que transcurre desde que el cliente inicia un pedido que se transforma en requerimientos de materiales, órdenes de producción y de otras tareas, hasta que todo se convierte en un producto en las manos de éste.</p>
+<p>Cuando se tiene mala calidad en las diferentes actividades hay equivocaciones y fallas de todo tipo, por ejemplo:</p>
+<ul>
+<li>Reprocesos, desperdicios y retrasos en la producción.<br />
+</li>
+<li>Pagar por elaborar productos malos.<br />
+</li>
+<li>Paros y fallas en el proceso.</li>
+<li>Una inspección excesiva para tratar que los productos de mala calidad no salgan al mercado.<br />
+</li>
+<li>Reinspección y eliminación de rechazo.<br />
+</li>
+<li>Más capacitación, instrucciones y presión a los trabajadores.<br />
+</li>
+<li>Gastos por fallas en el desempeño del producto y por devoluciones.<br />
+</li>
+<li>Problemas con proveedores.<br />
+</li>
+<li>Más servicios de garantía.<br />
+</li>
+<li>Clientes insatisfechos y pérdidas de ventas.<br />
+</li>
+<li>Problemas, diferencias y conflictos humanos en el interior de la empresa.</li>
+</ul>
+<p><strong>Competitividad</strong><br />
+Es la capacidad de una empresa para generar valor para el cliente y sus proveedores de mejor manera que sus competidores.</p>
+<p><strong>Productividad</strong><br />
+Es la capacidad de generar resultados utilizando ciertos recursos. Se incrementa maximizando resultados y/u optimizando recursos.</p>
+<p><strong>Eficiencia</strong><br />
+Relación entre los resultados logrados y los recursos empleados. Se mejora optimizando recursos y reduciendo tiempos desperdiciados por paros de equipo, falta de material, retrasos, etcétera.</p>
+<p><strong>Eficacia</strong><br />
+Grado con el cual las actividades planeadas son realizadas y los resultados previstos son logrados. Se atiende maximizando resultados.</p>
+<p><strong>Acciones preventivas</strong><br />
+Son aquellas que se implementan para eliminar la causa de una inconformidad u otra situación potencial indeseable.</p>
+<p><strong>Acciones correctivas</strong><br />
+Se emplean para eliminar la causa de una no conformidad detectada. Es decir, están orientadas a prevenir recurrencias.</p>
+<p><strong>Sistema de medición del desempeño</strong><br />
+Se refiere a cuantificar los signos vitales de la organización y con base en ellos encauzar el pensamiento de los empleados y fijar prioridades.</p>
+<p><strong>Conformancia</strong><br />
+Consiste en cumplir con las especificaciones de calidad y enfocarse a reducir el retrabajo y los desperdicios.</p>
+<p><strong>Variabilidad</strong><br />
+Se refiere a la diversidad de resultados de una variable o de un proceso.
+Por ejemplo, en un banco se lleva un registro de los minutos que los clientes esperan para ser atendido; al azar se eligen 40 de estos tiempos de espera y se obtiene lo siguiente:</p>
+<p>18.1 7.9 14.6 13.6 14.2 13.0 11.0 7.4 8.7 11.3 13.4 7.0 5.4 9.2 8.0 4.8 14.2 13.5 13.9 11.8 11.3 12.9 15.7 13.3 6.7 0.7 13.1 9.6 6.8 9.1 9.3 9.3 9.0 14.2 12.2 12.5 11.4 7.7 6.9 11.4</p>
+<p>En el caso de esta muestra el tiempo promedio de espera fue de 11.1. Pero existe variación, ya que un cliente espera menos de un minuto (0.7) y otro fue atendido después de 18.1 minutos de espera.</p>
+<p><strong>6M</strong><br />
+Son los materiales, mano de obra, mediciones, medio ambiente, máquinas y métodos que conforman un proceso.</p>
+<p><strong>Pensamiento estadístico</strong><br />
+Filosofía de aprendizaje y acción que establece la necesidad de un análisis adecuado de los datos de un proceso, como una acción indispensable para mejorar su calidad (reducir su variabilidad).</p>
+<p><strong>Ciclo de la calidad (ciclo PHVA)</strong><br />
+Proceso de cuatro etapas para desarrollar proyectos de mejora; consiste en planear, hacer, verificar y actuar (PHVA).</p>
+<p>Ocho pasos en la solución de un problema.</p>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="15%" />
+<col width="68%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">ETAPA</th>
+<th align="center">PASO</th>
+<th align="center">NOMBRE Y BREVE DESCRIPCIÓN DEL PASO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Planear</strong></td>
+<td align="center">1</td>
+<td align="center"><strong>Seleccionar y caracterizar un problema</strong>: elegir un problema realmente importante, delimitarlo y describirlo, estudiar antecedente e importancia, y cuantificar su magnitud actual.</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="center">2</td>
+<td align="center"><strong>Buscar todas las posibles causas</strong>: Lluvia de ideas, diagrama de Ishikawa. Participan los involucrados</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="center">3</td>
+<td align="center"><strong>Investigar cuáles de las causas son más importantes</strong>: recurrir a datos, análisis y conocimiento del problema.</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="center">4</td>
+<td align="center"><strong>Elaborar un plan de medidas enfocado a remediar las causas más importantes</strong>: para cada acción, detallar en qué consiste, su objetivo y cómo implementarla; responsables, fechas y costos.</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Hacer</strong></td>
+<td align="center">5</td>
+<td align="center"><strong>Ejecutar las medidas remedio</strong>: seguir el plan y empezar a pequeña escala.</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Verificar</strong></td>
+<td align="center">6</td>
+<td align="center"><strong>Revisar los resultados obtenidos</strong>: comparar el problema antes y después.</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Actuar</strong></td>
+<td align="center">7</td>
+<td align="center"><strong>Prevenir la recurrencia</strong>: si las acciones dieron resultado, éstas deben generalizarse y estandarizar su aplicación. Establecer medidas para evitar recurrencia</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="center">8</td>
+<td align="center"><strong>Conclusión y evaluación de lo hecho</strong>: evaluar todo lo hecho anteriormente y documentarlo.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="estadistica-descriptiva" class="section level2">
+<h2><span class="header-section-number">7.2</span> <strong>Estadística descriptiva</strong></h2>
+<p>Las variables de salida o de respuesta de un proceso deben cumplir con ciertas metas y/o especificaciones, a fin de que sea posible considerar que el proceso funciona de manera satisfactoria. Por ello, una tarea primordial del control de calidad es conocer la capacidad o habilidad de un proceso, que consiste en determinar la amplitud de la variación natural del proceso para una caracterítica de calidad dada. Esto permitirá saber en qué medida tal caracterítica de calidad es satisfactoria.</p>
+<p><strong>Capacidad de un proceso</strong></p>
+<p>Consiste en conocer la amplitud de la variación natural del proceso para una caracterítica de calidad dada; esto permitirá saber en qué medida tal caracterítica de calidad es satisfactoria (cumple especificaciones).</p>
+<p><strong>Estadísticos</strong></p>
+<p>Mediciones o cálculos que se obtienen a partir de un conjunto de datos con el objetivo de conocer sus caracteríticas más relevantes.</p>
+<p>Para ejemplificar todas las medidas ya sean estas de tendencia central o de variabilidad se usaran los siguientes datos:</p>
+<div id="medidas-de-tendencia-central" class="section level3">
+<h3><span class="header-section-number">7.2.1</span> <strong>Medidas de tendencia central</strong></h3>
+<p><strong>Tendencia central</strong></p>
+<p>Valor en torno al cual los datos o mediciones de una variable tienden a aglomerarse o concentrarse. A continuación se presentan las medidas de tendencia central de un conjunto de datos.</p>
+<p><strong>Media muestral</strong></p>
+<p>Medida de tendencia central que es igual al promedio aritmético de un conjunto de datos, que se obtiene al sumarlos y el resultado se divide entre el número de datos. Supongamos que <span class="math inline">\(x_{1}+x_{2}+...+x_{n}\)</span> son las observaciones numéricas de una muestra.</p>
+<p><span class="math display">\[\begin{equation}
+\bar{X}=\frac{x_{1}+x_{2}+...+x_{n}}{n}=\frac{\sum_{i=1}^{n}x_{i}}{n}
+\end{equation}\]</span>
+En R se utiliza la siguiente linea de código:</p>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb590-1" title="1"><span class="kw">mean</span>(<span class="dt">x =</span> vector_de_datos)</a></code></pre></div>
+<pre><code>## [1] 1.17864</code></pre>
+<p><strong>Media poblacional o del proceso, <span class="math inline">\(\mu\)</span></strong></p>
+<p>Si para calcular la media se utilizan todos los elementos de la población (todos los posibles individuos, especímenes, objetos o medidas de interés sobre los que se hace un estudio), entonces el promedio calculado es la media del proceso (o media poblacional) y se denota con la letra griega <span class="math inline">\(\mu\)</span> (mu).
+Es importante destacar que la media del proceso Î¼ es igual a cierto valor, aunque no siempre se conoce; mientras que el valor de <span class="math inline">\(\bar{x}\)</span> se obtiene para cada muestra y es diferente (variable) de una muestra a otra, ya que su valor depende de las piezas que se seleccionan (<span class="math inline">\(\bar{x}\)</span> es una variable aleatoria).</p>
+<p><strong>Mediana o percentil 50</strong></p>
+<p>La mediana <span class="math inline">\((\tilde{x})\)</span> es igual al valor que divide a la mitad a los datos cuando son ordenados de menor a mayor.Así, para calcular la mediana cuando el número de datos es impar, éstos se ordenan de manera creciente y el que quede en medio de dicho ordenamiento será la mediana. Pero si el número de datos es par, entonces la mediana se calcula dividiendo entre dos la suma de los números que están en el centro del ordenamiento.
+En R se usa la sigueinte función:</p>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb592-1" title="1"><span class="kw">median</span>(<span class="dt">x =</span> vector_de_datos)</a></code></pre></div>
+<pre><code>## [1] 1.18</code></pre>
+<p><strong>Moda</strong></p>
+<p>La moda es igual al dato que se repite más veces. Si varios datos tienen la frecuencia más grande, entonces cada uno de ellos es una moda, y se dice que el conjunto de datos es multimodal.
+En R no existe una función para encontrar la moda, un posible código sería:</p>
+<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb594-1" title="1">Moda &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</a>
+<a class="sourceLine" id="cb594-2" title="2">ux &lt;-<span class="st"> </span><span class="kw">unique</span>(x)</a>
+<a class="sourceLine" id="cb594-3" title="3">ux[<span class="kw">which.max</span>(<span class="kw">tabulate</span>(<span class="kw">match</span>(x, ux)))]</a>
+<a class="sourceLine" id="cb594-4" title="4">}</a>
+<a class="sourceLine" id="cb594-5" title="5"><span class="kw">Moda</span>(vector_de_datos)</a></code></pre></div>
+<pre><code>## [1] 1.17</code></pre>
+<p><strong>Las medidas de tendencia central son insuficientes como criterio de calidad</strong></p>
+<p>Suponga que la longitud de una pieza debe estar entre 800 <span class="math inline">\(\pm\)</span> 5. Para ver si se cumple con las especificaciones se toma una muestra aleatoria grande y se obtiene que:
+<span class="math display">\[\begin{equation}
+\bar{X}= 801,\ \ \tilde{X} = 801 \ \mathrm{\ y \ moda} = 800
+\end{equation}\]</span></p>
+<p>Debido a que estos estadíticos están dentro de las especificaciones, se podría creer que el proceso cumple con éstas. Sin embargo, esto no necesariamente es cierto, ya que en la muestra podría haber datos desde 750 hasta 850 y la media de todos ellos ser 801. Pero también podría ocurrir que el rango de variación de los datos vaya de 797 a 803, con lo que sí se cumpliría con las especificaciones. En otras palabras, las medidas de tendencia central son insuficientes como criterio de calidad, ya que no toman en cuenta qué tan dispersos están los datos, un hecho vital para la calidad.</p>
+</div>
+<div id="medidas-de-dispersion-o-variabilidad" class="section level3">
+<h3><span class="header-section-number">7.2.2</span> <strong>Medidas de dispersión o variabilidad </strong></h3>
+<p>Además de conocer la tendencia central de un conjunto de datos es necesario saber qué tan diferentes son entre sí, es decir, es preciso determinar su variabilidad o dispersión. Esto es un elemento vital en el estudio de capacidad de un proceso. En seguida veremos cuatro formas de medir la variabilidad.</p>
+<p><strong>Desviación estándar muestral </strong></p>
+<p>Es la medida más usual de variabilidad e indica qué tan esparcidos están los datos con respecto a la media; se denota con la letra <span class="math inline">\(S\)</span> y se calcula mediante la siguiente expresión:</p>
+<p><span class="math display">\[\begin{equation}
+S=\sqrt{\frac{\left ( x_{1}-\bar{x} \right )^{2}+\left ( x_{2}-\bar{x} \right )^{2}+...+\left ( x_{n}-\bar{x} \right )^{2}}{n-1}}
+\end{equation}\]</span></p>
+<p>En R tenemos:</p>
+<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb596-1" title="1"><span class="kw">sd</span>(vector_de_datos)</a></code></pre></div>
+<pre><code>## [1] 0.02695109</code></pre>
+<p>donde <span class="math inline">\(x_{1}+x_{2}+...+x_{n}\)</span> son las observaciones numéricas de la muestra, <span class="math inline">\(n\)</span> su tamaño y <span class="math inline">\(\bar{x}\)</span>es la media muestral. Como se puede apreciar, S mide la distancia que en promedio hay entre los datos y la media; por ello, entre más grande sea el valor de S habrá mayor variabilidad en los datos.</p>
+<p><strong>Desviación estándar poblacional o del proceso, <span class="math inline">\(\sigma\)</span></strong></p>
+<p>Si para calcular la desviación estándar muestral se emplean todos los elementos de la población o proceso, entonces se obtiene la desviación estándar poblacional y se denota con la letra griega sigma (<span class="math inline">\(\sigma\)</span>). Por otra parte, el cuadrado de la desviación estándar,<span class="math inline">\(S^{2}\)</span> , conocido como varianza muestral, es muy importante para propósitos de inferencia estadítica. Y en forma equivalente <span class="math inline">\(\sigma^{2}\)</span> es la varianza (o variancia) poblacional.</p>
+<p><strong>Rango o recorrido, R</strong></p>
+<p>Es igual a la diferencia entre el dato mayor y el dato menor de un conjunto de datos. El rango mide la amplitud de la variación de un grupo de datos, y es independiente de la magnitud de los datos.<br />
+En R:</p>
+<div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb598-1" title="1"><span class="kw">range</span>(vector_de_datos)</a></code></pre></div>
+<pre><code>## [1] 1.11 1.25</code></pre>
+<p><strong>Coeficiente de variación CV </strong></p>
+<p>El coeficiente de variación, CV, es una medida de variación que es relativa a la magnitud de los datos, ya que es igual a la magnitud relativa de la desviación estándar en comparación con la media de los datos, es decir:</p>
+<p><span class="math display">\[\begin{equation}
+CV = \frac{S}{\bar{x}}(100)
+\end{equation}\]</span>
+En R:</p>
+<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb600-1" title="1">coef_var &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb600-2" title="2">  <span class="kw">return</span>((<span class="kw">sd</span>(x)<span class="op">*</span><span class="dv">100</span>)<span class="op">/</span><span class="kw">mean</span>(x))</a>
+<a class="sourceLine" id="cb600-3" title="3">}</a>
+<a class="sourceLine" id="cb600-4" title="4"><span class="kw">coef_var</span>(vector_de_datos)</a></code></pre></div>
+<pre><code>## [1] 2.286626</code></pre>
+<p>El CV es útil para comparar la variación de dos o más variables que están medidas en diferentes escalas o unidades de medición.</p>
+</div>
+<div id="relacion-entre-barx-y-s-interpretacion-de-la-desviacion-estandar" class="section level3">
+<h3><span class="header-section-number">7.2.3</span> <strong>Relación entre <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(S\)</span> (interpretación de la desviación estándar)</strong></h3>
+<p><strong>Desigualdad de Chebyshev</strong></p>
+<p>Sea X variable aleatoria de media <span class="math inline">\(\mu\)</span> y varianza finita <span class="math inline">\(\sigma^{2}\)</span>, entonces, para todo número real <span class="math inline">\(a&gt;0\)</span>,
+<span class="math display">\[\begin{equation}
+P\left ( \left | X-\mu \right |&gt;a\sigma \right )\leq \frac{1}{a^{2}}
+\end{equation}\]</span>
+Sólo en caso de que <span class="math inline">\(a&gt;1\)</span> la desigualdad proporcionan una cota no trivial.</p>
+<p><strong>Regla empírica</strong></p>
+<p>Es la descripción de la proporción de observaciones que se encuentran alrededor de la media, en unidades de desviaciones estándar, siempre que la distribución de frecuencias sea aproximadamente simétrica</p>
+<p>Dos hechos particulares que afirma la desigualdad de Chebyshev es que:</p>
+<ol style="list-style-type: decimal">
+<li>entre <span class="math inline">\(\bar{X}-2S\)</span> y <span class="math inline">\(\bar{X}+2S\)</span> están por lo menos 75% de los datos de la muestra, y que<br />
+</li>
+<li>entre <span class="math inline">\(\bar{X}-3S\)</span> y <span class="math inline">\(\bar{X}+3S\)</span> están por lo menos 89% de éstos.</li>
+</ol>
+<p>En cuanto a la regla empírica se afirma que en muchos de los datos que surgen
+en la práctica se ha observado por la experiencia que:</p>
+<p>â¢ Entre <span class="math inline">\(\bar{X}-1S\)</span> y <span class="math inline">\(\bar{X}-1S\)</span> está 68% de los datos de la muestra.<br />
+â¢ Entre <span class="math inline">\(\bar{X}-2S\)</span> y <span class="math inline">\(\bar{X}-2S\)</span> está 95%.<br />
+â¢ Entre <span class="math inline">\(\bar{X}-3S\)</span> y <span class="math inline">\(\bar{X}-3S\)</span> está 99.7%.</p>
+<p>En R:</p>
+<div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb602-1" title="1"><span class="co">#k es el numero de desviaciones estándar</span></a>
+<a class="sourceLine" id="cb602-2" title="2">intervalo &lt;-<span class="st"> </span><span class="cf">function</span>(x,k){</a>
+<a class="sourceLine" id="cb602-3" title="3">  i1 &lt;-<span class="st"> </span><span class="kw">mean</span>(x)<span class="op">-</span>k<span class="op">*</span><span class="kw">sd</span>(x)</a>
+<a class="sourceLine" id="cb602-4" title="4">  i2 &lt;-<span class="st"> </span><span class="kw">mean</span>(x)<span class="op">+</span>k<span class="op">*</span><span class="kw">sd</span>(x)</a>
+<a class="sourceLine" id="cb602-5" title="5">  <span class="kw">return</span>(<span class="kw">c</span>(i1,i2))</a>
+<a class="sourceLine" id="cb602-6" title="6">}</a>
+<a class="sourceLine" id="cb602-7" title="7"><span class="kw">intervalo</span>(vector_de_datos,<span class="dv">3</span>)  </a></code></pre></div>
+<p>Todos los intervalos anteriores son válidos sólo para los datos muestrales y no necesariamente para toda la población o proceso. Sin embargo, si los intervalos se calculan con la media y la desviación estándar del proceso o población, entonces serán válidos para toda la población. Por lo tanto, en la medida que se tengan muestras aleatorias grandes y representativas, los intervalos anteriores podrán dar una idea aproximada de lo que pasa en el proceso.</p>
+</div>
+<div id="limites-reales-o-naturales" class="section level3">
+<h3><span class="header-section-number">7.2.4</span> <strong>Límites reales o naturales</strong></h3>
+<p>Los límites reales o naturales de un proceso indican los puntos entre los cuales varía la salida de un proceso y, por lo general, se obtienen de la siguiente manera:
+<span class="math display">\[\begin{equation}
+\text{Límite real inferior (LRI)} = \mu â 3\sigma \ \ \ y \ \ \  \text{Límite real superior (LRS)} = \mu + 3\sigma
+\end{equation}\]</span></p>
+<p>Para obtener un pequeño resumen de los datos usamos el siguiente comando:</p>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb603-1" title="1"><span class="kw">summary</span>(vector_de_datos)</a></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.110   1.160   1.180   1.179   1.200   1.250</code></pre>
+</div>
+</div>
+<div id="histograma-y-tabla-de-frecuencias" class="section level2">
+<h2><span class="header-section-number">7.3</span> <strong>Histograma y tabla de frecuencias</strong></h2>
+<div id="tabla-de-frecuencias" class="section level3">
+<h3><span class="header-section-number">7.3.1</span> <strong>Tabla de frecuencias</strong></h3>
+<p>Representación en forma de tabla de la distribución de unos datos, a los que se clasifica por su magnitud en cierto número de clases.
+En R podemos tener una tabla de frecuencias de la siguiente manera:</p>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb605-1" title="1"><span class="kw">table</span>(vector_de_datos)</a></code></pre></div>
+<pre><code>## vector_de_datos
+## 1.11 1.12 1.13 1.14 1.15 1.16 1.17 1.18 1.19  1.2 1.21 1.22 1.23 1.24 1.25 
+##    2    1    6    2    9   17   23   11   20   19    3    6    3    2    1</code></pre>
+</div>
+<div id="histograma" class="section level3">
+<h3><span class="header-section-number">7.3.2</span> <strong>Histograma</strong></h3>
+<p>Representación gráfica de la distribución de un conjunto de datos o de una variable, donde los datos se clasifi can por su magnitud en cierto número de clases. Permite visualizar la tendencia central, la dispersión y la forma de la distribución.
+En R:</p>
+<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb607-1" title="1"><span class="kw">hist</span>(vector_de_datos,<span class="dt">main =</span> <span class="st">&quot;Histograma&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Frecuencia&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;Datos&quot;</span>)</a></code></pre></div>
+<p><img src="control_book_files/figure-html/Histograma-1.png" width="672" /></p>
+<p><strong>Interpretación del histograma</strong></p>
+<p>Cuando un histograma se construye de manera correcta, es resultado de un número suficiente de datos (de preferencia más de 100), y éstos son representativos del estado del proceso durante el periodo de interés; entonces, se recomienda considerar los siguientes puntos en la interpretación del histograma.</p>
+<p><img src="control_book_files/figure-html/Comparaciones-1.png" width="672" /><img src="control_book_files/figure-html/Comparaciones-2.png" width="672" /><img src="control_book_files/figure-html/Comparaciones-3.png" width="672" /><img src="control_book_files/figure-html/Comparaciones-4.png" width="672" /><img src="control_book_files/figure-html/Comparaciones-5.png" width="672" /><img src="control_book_files/figure-html/Comparaciones-6.png" width="672" /><img src="control_book_files/figure-html/Comparaciones-7.png" width="672" /><img src="control_book_files/figure-html/Comparaciones-8.png" width="672" /></p>
+<p><strong>1. Observar la tendencia central de los datos.</strong> Localizar en el eje horizontal o escala de medición las barras con mayores frecuencias.</p>
+<p><strong>2. Estudiar el centrado del proceso.</strong> Para ello, es necesario apoyarse en el punto anterior y observar la posición central del cuerpo del histograma con respecto a la calidad óptima y a las especificaciones.</p>
+<p><strong>3.Examinar la variabilidad del proceso.</strong> Consiste en comparar la amplitud de las especificaciones con el ancho del histograma. Para considerar que la dispersión no es demasiada, el ancho del histograma debe caber de forma holgada en las especificaciones.</p>
+<p><strong>4. Analizar la forma del histograma.</strong> Al observar un histograma considerar que la forma de distribución de campana es la que más se da en salidas de proceso y tiene caracteríticas similares a la distribución normal.</p>
+<p><strong>Distribución sesgada.-</strong> Forma asimétrica de la distribución de unos datos o una variable, donde la cola de un lado de la distribución es más larga que la del otro lado.<br />
+<strong>Distribución multimodal.-</strong>Forma de la distribución de unos datos en la que sea aprecian claramente dos o más modas (picos). Por lo general, cada moda refleja una condición o realidad diferente.<br />
+Algunas situaciones que originan una distribución multimodal son:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Diferencias importantes de lote a lote en la materia prima que utiliza el proceso, debido a que proceden de diferentes proveedores o al exceso de variación de un mismo proveedor.</p></li>
+<li><p>Cuando en el proceso intervienen varios operadores, con criterios o métodos de trabajo diferentes.</p></li>
+<li><p>Las mediciones de la variable de salida que están representadas en el histograma fueron realizadas por personas o instrumentos diferentes; por lo tanto, se utilizaron distintos criterios o instrumentos mal calibrados.</p></li>
+<li><p>El proceso, cuando generó los resultados de la distribución multimodal, fue operando en condiciones diferentes (una condición para cada moda).</p></li>
+<li><p>En general, una distribución multimodal se debe a la presencia de fuentes de variación bien definidas que deben ser identificadas y corregidas, a fin de mejorar la capacidad del proceso correspondiente. Una forma de identificarlas es analizar por separado los datos en función de diferentes lotes de materia prima, operadores, instrumentos de medición, turnos o días de producción, etc., para así comparar los resultados y ver si hay diferencias significativas.</p></li>
+</ol>
+<p><strong>Distribución muy plana.-</strong> Es una distribución muy chata o plana y que está lejos de tener forma de campana. Las situaciones que pueden causar esto son las mismas que las de la distribución multimodal, pero con la particularidad de que las diferencias son menos fuertes; sin embargo, afectan de manera seria la capacidad de un proceso. Por lo tanto, también deben ser identificadas y corregidas mediante la estrategia recomendada antes.</p>
+<p><strong>Distribución con acantilados.-</strong> Es una suspensión o corte muy brusco en la caída de la distribución. Algunas de las posibles causas que motivan la presencia de un acantilado son: un lote de artículos previamente inspeccionados al 100% donde se excluyó a los artículos que no cumplen con alguna medida mínima o que exceden una medida máxima, problemas con el equipo de medición, errores en la medición o inspección.</p>
+<p><strong>5. Dato raro o atípico.</strong> Medición cuya magnitud es muy diferente a la generalidad de las mediciones del conjunto de datos correspondiente.</p>
+<p><strong>6. Estratificación.</strong>Consiste en clasifi car y analizar datos de acuerdo con las distintas fuentes de donde proceden, como, por ejemplo por máquinas, lotes, proveedores, turnos, etcétera.</p>
+</div>
+<div id="limitaciones-del-histograma" class="section level3">
+<h3><span class="header-section-number">7.3.3</span> <strong>Limitaciones del histograma</strong></h3>
+<p>Aunque el histograma es una herramienta fundamental para analizar el desempeño de un proceso, tiene algunas limitaciones:<br />
+<strong>1.</strong> No considera el tiempo en el que se obtuvieron los datos; por lo tanto, con el histograma es difícil detectar tendencias que ocurren a través del tiempo. Por tal razón, no ayuda a estudiar la estabilidad del proceso en el tiempo, lo cual se analiza por medio de cartas de control.<br />
+<strong>2.</strong> No es la técnica más apropiada para comparar de manera práctica varios procesos o grupos de datos; en esos casos, el diagrama de caja o la gráfica de medias son más apropiados.<br />
+<strong>3.</strong> La cantidad de clases o barras influye en la forma del histograma, por lo que una buena práctica es que a partir de la cantidad de clases que de manera inicial sugiere un software, se analice el histograma con un número de clases ligeramente menor y un poco más de clases, a fin de verificar si se observa algo diferente.</p>
+</div>
+</div>
+<div id="medidas-de-forma" class="section level2">
+<h2><span class="header-section-number">7.4</span> <strong>Medidas de forma</strong></h2>
+<p>En el análisis de un conjunto de datos o una variable es estudiar la forma de su distribución. Por ello, se presentan las mediciones del sesgo y la curtosis.
+Para usarlas en R se necesita el paquete{moments}</p>
+<div id="sesgo" class="section level3">
+<h3><span class="header-section-number">7.4.1</span> <strong>Sesgo</strong></h3>
+<p>Es una medida numérica de la asimetría en la distribución de un conjunto
+de datos, se obtiene a través del sesgo y del sesgo estandarizado (skewness), los cuales están dados por:</p>
+<p><span class="math display">\[\begin{equation}
+\text{Sesgo}= \frac{n \sum_{i=1}^{n}(x_{i}-\bar{x})^{3}}{(n-1)(n-2)S^{3}}
+\end{equation}\]</span></p>
+<p>En R:</p>
+<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb608-1" title="1"><span class="co">#skewness(vector_de_datos)</span></a></code></pre></div>
+<p><span class="math display">\[\begin{equation}
+\text{Sesgo estandarizado}= \frac{Sesgo}{\sqrt{\frac{6}{n}}}
+\end{equation}\]</span></p>
+<p>donde n es el tamaño de la muestra, <span class="math inline">\(S\)</span> la desviación estándar y <span class="math inline">\(\bar{x}\)</span> la media muestral.<br />
+El signo del sesgo indica el lado para el que la cola de la distribución es más larga, ya sea hacia la izquierda (signo â) o hacia la derecha (signo +). Para los datos que siguen una distribución normal, el valor del sesgo estandarizado debe caer dentro de <span class="math inline">\((â2, +2)\)</span>, por lo que si n es grande <span class="math inline">\((n &gt; 100)\)</span> y el sesgo estandarizado está fuera de tal intervalo, será una evidencia de que la distribución de los datos tiene un sesgo significativamente diferente al de la distribución normal o, en otras palabras, que la distribución de los datos no es normal.</p>
+</div>
+<div id="curtosis" class="section level3">
+<h3><span class="header-section-number">7.4.2</span> <strong>Curtosis</strong></h3>
+<p>Una medida para determinar qué tan elevada o plana (achatada o picuda) es la distribución de ciertos datos, tomando como referencia la distribución normal, se obtiene a través del estadítico llamado curtosis y del coeficiente de curtosis estandarizado, que están dados por:</p>
+<p><span class="math display">\[\begin{equation}
+\text{Curtosis}= \frac{n(n+1) \sum_{i=1}^{n}(x_{i}-\bar{x})^{4}}{(n-1)(n-2)(n-3)S^{4}}- \frac{3(n-1)}{(n-2)(n-3)}
+\end{equation}\]</span></p>
+<p>En R:</p>
+<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb609-1" title="1"><span class="co">#kurtosis(vector_de_datos)</span></a></code></pre></div>
+<p><span class="math display">\[\begin{equation}
+\text{Curtosis estandarizado}= \frac{curtosis}{\sqrt{\frac{24}{n}}}
+\end{equation}\]</span></p>
+</div>
+<div id="cuantiles-percentiles" class="section level3">
+<h3><span class="header-section-number">7.4.3</span> <strong>Cuantiles (percentiles)</strong></h3>
+<p>Medidas de localización que separan por magnitud un conjunto de datos en cierto número de grupos o partes que contienen la misma cantidad de datos.Por ejemplo, los deciles dividen los datos en 10 grupos.De manera más formal, sea
+<span class="math inline">\(x_1, x_2, ..., x_n\)</span> un conjunto de n mediciones ordenadas en forma creciente, se define su percentil <span class="math inline">\(p\)</span> como el valor x tal que el <span class="math inline">\(p \%\)</span> de las mediciones es menor o igual a x, y el <span class="math inline">\((100 â p) \%\)</span> mayor o igual.
+<span class="math display">\[P_k=L_i+\frac{\frac{k*N}{100}-F_{i-1}} {f_i}a_i\]</span>
+<span class="math display">\[k=1,2,...,99\]</span>
+En donde:</p>
+<ul>
+<li><span class="math inline">\(L_i\)</span> es el límite inferior de la clase donde se encuentra el percentil.</li>
+<li><span class="math inline">\(N\)</span> es la suma de las frecuencias absolutas.</li>
+<li><span class="math inline">\(F_{i-1}\)</span> es la frecuencia acumulada anterior a la clase del percentil.</li>
+<li><span class="math inline">\(a_i\)</span> es la amplitud de la clase.</li>
+</ul>
+<p><strong>Ejemplo</strong></p>
+<p>Calcular el percentil 35 y 60 de la distribución de la tabla:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Intervalos</th>
+<th align="center"><span class="math inline">\(f_i\)</span></th>
+<th align="center"><span class="math inline">\(F_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">[50, 60)</td>
+<td align="center">8</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center">[60, 70)</td>
+<td align="center">10</td>
+<td align="center">18</td>
+</tr>
+<tr class="odd">
+<td align="center">[70, 80)</td>
+<td align="center">16</td>
+<td align="center">34</td>
+</tr>
+<tr class="even">
+<td align="center">[80, 90)</td>
+<td align="center">14</td>
+<td align="center">48</td>
+</tr>
+<tr class="odd">
+<td align="center">[90, 100)</td>
+<td align="center">10</td>
+<td align="center">58</td>
+</tr>
+<tr class="even">
+<td align="center">[100,110)</td>
+<td align="center">5</td>
+<td align="center">63</td>
+</tr>
+<tr class="odd">
+<td align="center">[110,120)</td>
+<td align="center">2</td>
+<td align="center">65</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="center">65</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Para Percentil 35, tenemos que:</li>
+</ul>
+<p><span class="math display">\[P_{35}=70+\frac{\frac{35*65}{100}-18} {16}*10=72.97\]</span></p>
+<ul>
+<li>Ahora para Percentil 60, tenemos que:</li>
+</ul>
+<p><span class="math display">\[P_{60}=80+\frac{\frac{60*65}{100}-34} {14}*10=83.57\]</span></p>
+</div>
+<div id="cuartiles" class="section level3">
+<h3><span class="header-section-number">7.4.4</span> <strong>Cuartiles</strong></h3>
+<div class="text-justify">
+<p>Son iguales a los percentiles 25, 50 y 75, y sirven para separar por magnitud la distribución de unos datos en cuatro grupos, donde cada uno contiene <span class="math inline">\(25\%\)</span> de los datos.
+Como vimos antes, al percentil 25 también se le conoce como primer cuartil o cuartil inferior, <span class="math inline">\(C_i\)</span>; mientras que la mediana que es el percentil 50 corresponde al cuartil medio <span class="math inline">\(C_m\)</span>; y el percentil 75 es el cuartil superior, <span class="math inline">\(C_s\)</span> o tercer cuartil.</p>
+</div>
+<p>Utilizando R, podemos calcular los cuartiles:</p>
+<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb610-1" title="1">x&lt;-<span class="kw">c</span>(<span class="fl">18.6</span> ,<span class="fl">19.9</span>, <span class="fl">18.8</span>, <span class="fl">18.4</span>, <span class="fl">19.0</span>, <span class="fl">20.1</span>, <span class="fl">19.7</span>, <span class="fl">19.3</span>, <span class="fl">20.7</span>, <span class="fl">19.6</span>, <span class="fl">19.5</span>, <span class="fl">19.1</span>, <span class="fl">18.5</span>, <span class="fl">19.6</span>, <span class="fl">19.4</span>, <span class="fl">19.6</span>, <span class="fl">20.3</span>, <span class="fl">18.8</span>, <span class="fl">19.2</span>, <span class="fl">20.6</span>, <span class="fl">20.0</span>, <span class="fl">18.4</span>, <span class="fl">18.9</span>, <span class="fl">19.7</span>, <span class="fl">17.8</span>, <span class="fl">19.4</span>, <span class="fl">18.9</span>, <span class="fl">18.4</span>, <span class="fl">19.0</span>, <span class="fl">19.7</span>)</a>
+<a class="sourceLine" id="cb610-2" title="2"><span class="kw">summary</span>(x)</a></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   17.80   18.82   19.35   19.30   19.70   20.70</code></pre>
+<ul>
+<li><span class="math inline">\(C_i\)</span>=19.00</li>
+<li><span class="math inline">\(C_m\)</span>=Mediana=19.25</li>
+<li><span class="math inline">\(C_s\)</span>=19.60</li>
+</ul>
+</div>
+<div id="diagrama-de-caja" class="section level3">
+<h3><span class="header-section-number">7.4.5</span> <strong>Diagrama de caja</strong></h3>
+<div class="text-justify">
+<p>Representación gráfi ca de la distribución de un conjunto de datos que se basa en los cuartiles. Es de gran utilidad para hacer análisis comparativos.De esta forma es posible visualizar dónde termina de acumularse <span class="math inline">\(25\%\)</span> de los datos menores, y a partir de dónde se localiza <span class="math inline">\(25\%\)</span> de los datos mayores. Entre estos dos cuartiles se ubica <span class="math inline">\(50\%\)</span> de los datos que están al centro. Pero además de los cuartiles están involucrados los siguientes conceptos:</p>
+<ul>
+<li>Rango intercuartílico, <span class="math inline">\(R_c\)</span> = <span class="math inline">\(C_s\)</span> â <span class="math inline">\(C_i\)</span></li>
+<li>Barrera interior izquierda, <span class="math inline">\(C_i\)</span>â 1.5 <span class="math inline">\(R_c\)</span> e interior derecha <span class="math inline">\(C_s\)</span> +1.5 <span class="math inline">\(R_c\)</span></li>
+<li>Barrera exterior izquierda, <span class="math inline">\(C_i\)</span> â 3 <span class="math inline">\(R_c\)</span>, y exterior derecha <span class="math inline">\(C_s\)</span> + 3<span class="math inline">\(R_c\)</span></li>
+</ul>
+<p>El Rango intercuartílico es igual a la distancia entre el cuartil inferior y el superior, y determina el rango en el que se ubican <span class="math inline">\(50\%\)</span> de los datos que están en el centro de la distribución. A continuación serán los pasos para realizar un diagrama de cajas horizontal</p>
+<ol style="list-style-type: decimal">
+<li><p>Haga una escala numérica que abarque toda la variación de los datos. Arriba de esta escala trace una caja o rectángulo cuyo largo vaya desde el cuartil inferior <span class="math inline">\(C_i\)</span> hasta el cuartil superior <span class="math inline">\(C_s\)</span>. Así, el largo del rectángulo es igual al rango intercuartílico, <span class="math inline">\(R_c\)</span> = <span class="math inline">\(C_s\)</span> â <span class="math inline">\(C_i\)</span>.</p></li>
+<li><p>Del lado izquierdo del rectángulo se traza un bigote, brazo o línea paralela a la escala que va de <span class="math inline">\(C_i\)</span> hasta el dato más pequeño que aún está por dentro de la barrera interior izquierda. Si hay datos por debajo de la barrera, se representarán por medio de puntos aislados que se ubicarán de acuerdo con la magnitud del dato correspondiente.</p></li>
+<li><p>En forma similar se traza el brazo o bigote derecho: que va desde <span class="math inline">\(C_s\)</span>
+hasta el dato más grande que aún está dentro de la barrera interior derecha. Si hay datos por arriba de la barrera, se representarán por medio de un punto que se ubicará de acuerdo con la magnitud del dato correspondiente. Los datos que superan las barreras interiores pueden ser considerados como datos alejados con cierta sospecha de ser atípicos.</p></li>
+<li>Si aún hay datos por fuera de las barreras exteriores, se representarán con un asterisco. Los datos que queden fuera de estas barreras exteriores, de manera definitiva pueden considerarse datos muy alejados, raros o aberrantes.</li>
+</ol>
+</div>
+<p>Realizando con R, para el gráfico horizontal, se tiene que:</p>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb612-1" title="1"><span class="kw">boxplot</span>(x,<span class="dt">xlab=</span><span class="st">&quot;Lote 1&quot;</span>,<span class="dt">horizontal =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><img src="control_book_files/figure-html/unnamed-chunk-198-1.png" width="672" /></p>
+<p>Y por defecto se tiene el diagrama de caja, verticalmente:</p>
+<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb613-1" title="1"><span class="kw">boxplot</span>(x,<span class="dt">xlab=</span><span class="st">&quot;Lote 1&quot;</span>)</a></code></pre></div>
+<p><img src="control_book_files/figure-html/unnamed-chunk-199-1.png" width="672" /></p>
+<p>Cuando se tiene varias muestras, y se las desea comparar en un solo gráfico, se tiene que:</p>
+<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb614-1" title="1"><span class="kw">boxplot</span>(df<span class="op">$</span>pesos<span class="op">~</span>df<span class="op">$</span>lote)</a></code></pre></div>
+<p><img src="control_book_files/figure-html/unnamed-chunk-201-1.png" width="672" /></p>
+<p>También se los puede tener en gráficos separados</p>
+<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb615-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb615-2" title="2"><span class="kw">boxplot</span>(x1,<span class="dt">xlab=</span><span class="st">&quot;Lote 1&quot;</span>)</a>
+<a class="sourceLine" id="cb615-3" title="3"><span class="kw">boxplot</span>(x2,<span class="dt">xlab=</span><span class="st">&quot;Lote 2&quot;</span>)</a>
+<a class="sourceLine" id="cb615-4" title="4"><span class="kw">boxplot</span>(x3,<span class="dt">xlab=</span><span class="st">&quot;Lote 3&quot;</span>)</a></code></pre></div>
+<p><img src="control_book_files/figure-html/unnamed-chunk-202-1.png" width="672" /></p>
+<p><strong>Interpretación del diagrama de caja</strong></p>
+<div class="text-justify">
+<p>De acuerdo con la manera en que se construyó este diagrama, en su interpretación se debe hacer énfasis en:</p>
+<ol style="list-style-type: decimal">
+<li><p>El largo del diagrama (que incluye el rectángulo más ambos brazos o bigotes), ya que esto indica una medida de la variación de los datos y resulta de gran utilidad sobre todo para comparar la variación entre procesos, tratamientos, lotes o turnos de trabajo o producción. En general, entre más largo sea un diagrama indicará una mayor variación de los datos correspondientes.</p></li>
+<li><p>La parte central del diagrama indica la tendencia central de los datos, por lo que también ayudará a comparar dos o más procesos, máquinas, lotes o turnos en cuanto a su tendencia central.</p></li>
+<li><p>Comparar de manera visual la longitud de ambos brazos. Si uno es notoriamente más largo que el otro, entonces la distribución de los datos quizás está sesgada en la dirección del brazo más largo. También es preciso observar la ubicación de la línea mediana que parte la caja, ya que si está más cerca de uno de los extremos, será señal de un probable sesgo en los datos.</p></li>
+<li>En caso de que el diagrama esté basado en una cantidad suficiente de datos (por ejemplo 10 como mínimo), es necesario ver si hay datos fuera de las barreras interiores, marcados con un punto, ya que entre más alejado esté un dato del final del brazo, será señal de que probablemente sea un dato atípico. Si los datos caen más allá de las barreras exteriores, prácticamente es un hecho que tales datos son atípicos o aberrantes.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="conceptos-de-probabilidad" class="section level2">
+<h2><span class="header-section-number">7.5</span> <strong>Conceptos de probabilidad</strong></h2>
+<p><strong>Experimento aleatorio</strong></p>
+<p>Es aquel cuyo resultado no puede anticiparse aun cuando se repita bajo las mismas condiciones. Por ejemplo, la medición de las piezas fabricadas con un mismo proceso.</p>
+<p><strong>Espacio Muestral</strong></p>
+<p>Es el conjunto de resultados posibles de un experimento aleatorio.</p>
+<p>**Evento</p>
+<p>Es un subconjunto del espacio muestral de un experimento aleatorio.</p>
+</div>
+<div id="interpretacion-de-la-probabilidad" class="section level2">
+<h2><span class="header-section-number">7.6</span> <strong>Interpretación de la probabilidad</strong></h2>
+<p><strong>Variable aleatoria</strong></p>
+<p>Función que asocia un número a cada resultado de un experimento aleatorio.</p>
+<p><strong>Variable aleatoria discreta</strong></p>
+<p>Variable a la que se pueden numerar los posibles valores que toma.</p>
+<p><strong>Distribución de probabilidad de <span class="math inline">\(X\)</span></strong></p>
+<div class="text-justify">
+<p>Es una descripción del conjunto de los valores posibles de <span class="math inline">\(X\)</span> con la probabilidad asociada a cada uno de estos valores.
+El evento que está formado por todos los resultados para los que <span class="math inline">\(X = x\)</span>, se
+denota por <span class="math inline">\({X = x}\)</span>, y la probabilidad de éste por <span class="math inline">\(P(X = x)\)</span>. La distribución de probabilidad de X o distribución de una variable aleatoria <span class="math inline">\(X\)</span> es una descripción del conjunto de valores posibles de <span class="math inline">\(X (\)</span><span class="math inline">\(rango\)</span> <span class="math inline">\(de\)</span> <span class="math inline">\(X)\)</span>, junto con la probabilidad asociada a cada uno de estos valores. La distribución se representa a través de una tabla que relaciona resultados con probabilidades, o bien, por medio de una fórmula.
+En el caso discreto, la función <span class="math inline">\(f(x) = P(X = x)\)</span> que va del rango de X al intervalo <span class="math inline">\([0, 1]\)</span> recibe el nombre de función de probabilidad, y cumple con las siguientes propiedades:</p>
+</div>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(f(x) = P(X = x)\)</span> (la función <span class="math inline">\(f(x)\)</span> da la probabilidad).</li>
+<li><p><span class="math inline">\(f(x) \geq 0\)</span> para toda x (no hay probabilidades negativas).</p></li>
+<li><p><span class="math inline">\(\begin{equation} \sum_{x} f(x)=1 \end{equation}\)</span>
+(la suma de las probabilidades de todos los posibles valores de <span class="math inline">\(X\)</span> es <span class="math inline">\(= 1\)</span>).</p></li>
+</ol>
+<p>En el caso continuo, estas mismas propiedades se enuncian de la siguiente forma: si <span class="math inline">\(f(x)\)</span> es una función de densidad de probabilidades de la variable aleatoria continua <span class="math inline">\(X\)</span>; entonces, para cualquier intervalo de números reales <span class="math inline">\([x1, x2]\)</span>, se cumple:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(f(x) \geq 0\)</span></p></li>
+<li><p><span class="math inline">\(\int_\mathbb{R}\ f(x) \,dx=1\)</span> (el área bajo toda la curva es 1).</p></li>
+<li><p><span class="math inline">\(P(x1 \leq X \leq x2) =\)</span> <span class="math inline">\(\int_{x_1}^{x_2} f(\mu) \,d\mu\)</span> (la probabilidad es igual al área bajo la curva entre los valores <span class="math inline">\(x1\)</span> y <span class="math inline">\(x2\)</span>).</p></li>
+</ol>
+<p><strong>Media o valor esperado de una variable aleatoria</strong></p>
+<p>Si una distribución es un buen modelo, entonces a través de ella se encuentran las principales caracteríticas del sistema (población o proceso), tales como su tendencia central y variabilidad. La media <span class="math inline">\(Î¼\)</span> de una variable aleatoria discreta que puede tomar los <span class="math inline">\(n\)</span> valores <span class="math inline">\(x_1, x_2, ..., x_n\)</span> está dada por:
+<span class="math display">\[\mu=E(X)=\sum_{i} x_if(x_i)=\sum_{i} x_iP(X=x_i) \]</span>
+donde <span class="math inline">\(E(X) = x_1p(x_1) + x_2p(x_2) + .... + x_np(x_n)\)</span>, se lee como âvalor esperado de <span class="math inline">\(X\)</span>â. La varianza de la variable aleatoria <span class="math inline">\(X\)</span> se puede definir en términos del valor esperado como:
+<span class="math display">\[\sigma^2=V(X)=E(X-\mu)^2=\sum_{x} (x-\mu)^2f(x)=E(X^2)-\mu^2 \]</span></p>
+<p>Mientras que la función de distribución acumulada de una variable aleatoria discreta <span class="math inline">\(X\)</span>, denotada por <span class="math inline">\(F(x)\)</span>, es
+<span class="math display">\[F(X)=P(X â¤ x)=\sum_{x_iâ¤x} f(x_i) \]</span>
+En el caso continuo, se sustituye la suma por la integral,
+<span class="math display">\[E(X) = \int_{\mathbb{R}} xf(x) \,dx\]</span></p>
+
+</div>
+</div>
+
+
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="practica-5.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bayesian-cps.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["control_book.pdf", "control_book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
