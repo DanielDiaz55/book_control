@@ -277,7 +277,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.1" data-path="test-de-mood.html"><a href="test-de-mood.html#test-de-mood-para-la-dispersion"><i class="fa fa-check"></i><b>10.1</b> Test de Mood para la dispersión</a></li>
 <li class="chapter" data-level="10.2" data-path="test-de-mood.html"><a href="test-de-mood.html#graficos-de-control-3"><i class="fa fa-check"></i><b>10.2</b> Gráficos de control</a></li>
 <li class="chapter" data-level="10.3" data-path="test-de-mood.html"><a href="test-de-mood.html#simulacion"><i class="fa fa-check"></i><b>10.3</b> Simulación</a></li>
-<li class="chapter" data-level="10.4" data-path="test-de-mood.html"><a href="test-de-mood.html#desempeno-del-grafico-de-controlarl"><i class="fa fa-check"></i><b>10.4</b> DESEMPEñO DEL GRáFICO DE CONTROL(ARL)</a></li>
+<li class="chapter" data-level="10.4" data-path="test-de-mood.html"><a href="test-de-mood.html#desempeno-del-grafico-de-control-arl"><i class="fa fa-check"></i><b>10.4</b> Desempeño del Gráfico de Control (ARL)</a></li>
 <li class="chapter" data-level="10.5" data-path="test-de-mood.html"><a href="test-de-mood.html#cpmchange-point-model"><i class="fa fa-check"></i><b>10.5</b> CPM(Change Point Model)</a></li>
 <li class="chapter" data-level="10.6" data-path="test-de-mood.html"><a href="test-de-mood.html#conclusiones-1"><i class="fa fa-check"></i><b>10.6</b> Conclusiones</a></li>
 <li class="chapter" data-level="10.7" data-path="test-de-mood.html"><a href="test-de-mood.html#referencias"><i class="fa fa-check"></i><b>10.7</b> Referencias</a></li>
@@ -386,20 +386,20 @@ Por tanto, se realiza el análisis de la <em>CAPACIDAD DEL PROCESO</em></p>
 ## process.capability(object = q1, spec.limits = c(38, 62), restore.par = FALSE)
 ## 
 ## Number of obs = 125          Target = 50
-##        Center = 49.67           LSL = 38
-##        StdDev = 3.54            USL = 62
+##        Center = 49.35           LSL = 38
+##        StdDev = 4.259           USL = 62
 ## 
 ## Capability indices:
 ## 
-##       Value    2.5%  97.5%
-## Cp    1.130  0.9893  1.270
-## Cp_l  1.099  0.9738  1.223
-## Cp_u  1.161  1.0302  1.292
-## Cp_k  1.099  0.9499  1.247
-## Cpm   1.125  0.9849  1.265
+##        Value    2.5%   97.5%
+## Cp    0.9392  0.8224  1.0559
+## Cp_l  0.8882  0.7832  0.9931
+## Cp_u  0.9903  0.8758  1.1048
+## Cp_k  0.8882  0.7631  1.0132
+## Cpm   0.9284  0.8121  1.0446
 ## 
-## Exp&lt;LSL 0.049%    Obs&lt;LSL 0%
-## Exp&gt;USL 0.025%    Obs&gt;USL 0%</code></pre>
+## Exp&lt;LSL 0.39%     Obs&lt;LSL 0%
+## Exp&gt;USL 0.15%     Obs&gt;USL 0%</code></pre>
 <div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" title="1"><span class="kw">process.capability</span>(q2, <span class="dt">spec.limits=</span><span class="kw">c</span>(<span class="dv">38</span>,<span class="dv">62</span>), <span class="dt">restore.par =</span> <span class="ot">FALSE</span>) <span class="co">#, target=50)</span></a></code></pre></div>
 <p><img src="control_book_files/figure-html/unnamed-chunk-80-2.png" width="672" /></p>
 <pre><code>## 
@@ -409,20 +409,20 @@ Por tanto, se realiza el análisis de la <em>CAPACIDAD DEL PROCESO</em></p>
 ## process.capability(object = q2, spec.limits = c(38, 62), restore.par = FALSE)
 ## 
 ## Number of obs = 125          Target = 50
-##        Center = 56.27           LSL = 38
-##        StdDev = 2.128           USL = 62
+##        Center = 55.97           LSL = 38
+##        StdDev = 2.099           USL = 62
 ## 
 ## Capability indices:
 ## 
 ##        Value    2.5%   97.5%
-## Cp    1.8801  1.6463  2.1136
-## Cp_l  2.8627  2.5597  3.1657
-## Cp_u  0.8976  0.7918  1.0034
-## Cp_k  0.8976  0.7715  1.0236
-## Cpm   0.6040  0.5011  0.7068
+## Cp    1.9055  1.6685  2.1422
+## Cp_l  2.8539  2.5519  3.1560
+## Cp_u  0.9571  0.8457  1.0684
+## Cp_k  0.9571  0.8244  1.0898
+## Cpm   0.6318  0.5243  0.7391
 ## 
 ## Exp&lt;LSL 0%    Obs&lt;LSL 0%
-## Exp&gt;USL 0.35%     Obs&gt;USL 0%</code></pre>
+## Exp&gt;USL 0.2%  Obs&gt;USL 0%</code></pre>
 <div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" title="1"><span class="kw">process.capability</span>(q3, <span class="dt">spec.limits=</span><span class="kw">c</span>(<span class="dv">38</span>,<span class="dv">62</span>), <span class="dt">restore.par =</span> <span class="ot">FALSE</span>) <span class="co">#, target=50)</span></a></code></pre></div>
 <p><img src="control_book_files/figure-html/unnamed-chunk-80-3.png" width="672" /></p>
 <pre><code>## 
@@ -432,20 +432,20 @@ Por tanto, se realiza el análisis de la <em>CAPACIDAD DEL PROCESO</em></p>
 ## process.capability(object = q3, spec.limits = c(38, 62), restore.par = FALSE)
 ## 
 ## Number of obs = 125          Target = 50
-##        Center = 59.11           LSL = 38
-##        StdDev = 0.9296          USL = 62
+##        Center = 58.84           LSL = 38
+##        StdDev = 1.064           USL = 62
 ## 
 ## Capability indices:
 ## 
-##        Value    2.5%  97.5%
-## Cp    4.3029  3.7677  4.837
-## Cp_l  7.5690  6.7769  8.361
-## Cp_u  1.0369  0.9180  1.156
-## Cp_k  1.0369  0.8952  1.179
-## Cpm   0.4369  0.3606  0.513
+##        Value    2.5%   97.5%
+## Cp    3.7580  3.2905  4.2247
+## Cp_l  6.5265  5.8431  7.2100
+## Cp_u  0.9895  0.8751  1.1039
+## Cp_k  0.9895  0.8532  1.1258
+## Cpm   0.4492  0.3709  0.5274
 ## 
 ## Exp&lt;LSL 0%    Obs&lt;LSL 0%
-## Exp&gt;USL 0.093%    Obs&gt;USL 0%</code></pre>
+## Exp&gt;USL 0.15%     Obs&gt;USL 0%</code></pre>
 <div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" title="1"><span class="kw">par</span>(op)</a></code></pre></div>
 <p>Valores de 1.33, 1.50 denotan procesos capaces.
 El valor de 2 es el buscado en six sigma</p>
